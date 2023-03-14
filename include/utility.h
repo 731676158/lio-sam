@@ -103,6 +103,14 @@ public:
     float imuGyrNoise;
     float imuAccBiasN;
     float imuGyrBiasN;
+    Eigen::Vector3d imuAccNoiseVec;
+    Eigen::Vector3d imuGyrNoiseVec;
+    Eigen::Vector3d imuAccBiasNVec;
+    Eigen::Vector3d imuGyrBiasNVec;
+    vector<double> imuAccNoiseVecV;
+    vector<double> imuGyrNoiseVecV;
+    vector<double> imuAccBiasNVecV;
+    vector<double> imuGyrBiasNVecV;
     float imuGravity;
     float imuRPYWeight;
     vector<double> extRotV;
@@ -155,9 +163,9 @@ public:
     {
         nh.param<std::string>("/robot_id", robot_id, "roboat");
 
-        nh.param<std::string>("lio_sam/pointCloudTopic", pointCloudTopic, "points_raw");
-        nh.param<std::string>("lio_sam/imuTopic", imuTopic, "imu_correct");
-        nh.param<std::string>("lio_sam/odomTopic", odomTopic, "odometry/imu");
+        nh.param<std::string>("lio_sam/pointCloudTopic", pointCloudTopic, "/velodyne_points");//"/velodyne_points"
+        nh.param<std::string>("lio_sam/imuTopic", imuTopic, "/imu/data");// "/imu/data"
+        nh.param<std::string>("lio_sam/odomTopic", odomTopic, "/odom");
         nh.param<std::string>("lio_sam/gpsTopic", gpsTopic, "odometry/gps");
 
         nh.param<std::string>("lio_sam/lidarFrame", lidarFrame, "base_link");
@@ -204,6 +212,14 @@ public:
         nh.param<float>("lio_sam/imuGyrNoise", imuGyrNoise, 0.001);
         nh.param<float>("lio_sam/imuAccBiasN", imuAccBiasN, 0.0002);
         nh.param<float>("lio_sam/imuGyrBiasN", imuGyrBiasN, 0.00003);
+        nh.param<vector<double>>("lio_sam/imuAccNoiseVec", imuAccNoiseVecV, vector<double>());
+        imuAccNoiseVec = Eigen::Map<const Eigen::Matrix<double, -1, -1, Eigen::RowMajor>>(imuAccNoiseVecV.data(), 3, 1);
+        nh.param<vector<double>>("lio_sam/imuGyrNoiseVec", imuGyrNoiseVecV, vector<double>());
+        imuGyrNoiseVec = Eigen::Map<const Eigen::Matrix<double, -1, -1, Eigen::RowMajor>>(imuGyrNoiseVecV.data(), 3, 1);
+        nh.param<vector<double>>("lio_sam/imuAccBiasNVec", imuAccBiasNVecV, vector<double>());
+        imuAccBiasNVec = Eigen::Map<const Eigen::Matrix<double, -1, -1, Eigen::RowMajor>>(imuAccBiasNVecV.data(), 3, 1);
+        nh.param<vector<double>>("lio_sam/imuGyrBiasNVec", imuGyrBiasNVecV, vector<double>());
+        imuGyrBiasNVec = Eigen::Map<const Eigen::Matrix<double, -1, -1, Eigen::RowMajor>>(imuGyrBiasNVecV.data(), 3, 1);
         nh.param<float>("lio_sam/imuGravity", imuGravity, 9.80511);
         nh.param<float>("lio_sam/imuRPYWeight", imuRPYWeight, 0.01);
         nh.param<vector<double>>("lio_sam/extrinsicRot", extRotV, vector<double>());

@@ -1,9 +1,9 @@
 lio_sam:
 
   # Topics
-  pointCloudTopic: "points_raw"               # Point cloud data
-  imuTopic: "imu_raw"                         # IMU data
-  odomTopic: "odometry/imu"                   # IMU pre-preintegration odometry, same frequency as IMU
+  pointCloudTopic: "/velodyne_points"               # Point cloud data
+  imuTopic: "/imu/data"                         # IMU data
+  odomTopic: "/odom"                   # IMU pre-preintegration odometry, same frequency as IMU
   gpsTopic: "odometry/gpsz"                   # GPS odometry topic from navsat, see module_navsat.launch file
 
   # Frames
@@ -13,14 +13,14 @@ lio_sam:
   mapFrame: "map"
 
   # GPS Settings
-  useImuHeadingInitialization: true           # if using GPS data, set to "true"
+  useImuHeadingInitialization: false           # if using GPS data, set to "true"
   useGpsElevation: false                      # if GPS elevation is bad, set to "false"
   gpsCovThreshold: 2.0                        # m^2, threshold for using GPS data
   poseCovThreshold: 25.0                      # m^2, threshold for using GPS data
   
   # Export settings
-  savePCD: false                              # https://github.com/TixiaoShan/LIO-SAM/issues/3
-  savePCDDirectory: "/Downloads/LOAM/"        # in your home folder, starts and ends with "/". Warning: the code deletes "LOAM" folder then recreates it. See "mapOptimization" for implementation
+  savePCD: true                              # https://github.com/TixiaoShan/LIO-SAM/issues/3
+  savePCDDirectory: "/codes/LIO-SAM/src/LIO-SAM/savings/"        # in your home folder, starts and ends with "/". Warning: the code deletes "LOAM" folder then recreates it. See "mapOptimization" for implementation
 
   # Sensor Settings
   sensor: velodyne                            # lidar sensor type, 'velodyne' or 'ouster' or 'livox'
@@ -31,27 +31,31 @@ lio_sam:
   lidarMaxRange: 1000.0                       # default: 1000.0, maximum lidar range to be used
 
   # IMU Settings
-  imuAccNoise: 3.9939570888238808e-03
-  imuGyrNoise: 1.5636343949698187e-03
-  imuAccBiasN: 6.4356659353532566e-05
-  imuGyrBiasN: 3.5640318696367613e-05
+  imuAccNoise: 3.1514220623477064e-02
+  imuGyrNoise: 2.5853068232056960e-02
+  imuAccBiasN: 1.4652401634365744e-03
+  imuGyrBiasN: 1.6391307412717930e-03
+  imuAccNoiseVec: [7.2769008752239600e-02, 1.0166780812829401e-02, 1.1606872305362191e-02]
+  imuGyrNoiseVec: [9.9762054878412432e-03, 5.6864934206213920e-02, 1.0718065002115706e-02]
+  imuAccBiasNVec: [3.9763580043866683e-03, 2.8794407083459006e-05, 3.9056807883959527e-04]
+  imuGyrBiasNVec: [1.5155176645294676e-05, 4.8477797168896648e-03, 5.4457330280419392e-05]
   imuGravity: 9.80511
   imuRPYWeight: 0.01
 
   # Extrinsics: T_lb (lidar -> imu)
-  extrinsicTrans: [0.0, 0.0, 0.0]
-  extrinsicRot: [-1, 0, 0,
-                  0, 1, 0,
-                  0, 0, -1]
-  extrinsicRPY: [0, -1, 0,
-                 1, 0, 0,
-                 0, 0, 1]
-  # extrinsicRot: [1, 0, 0,
+  extrinsicTrans: [0.000575685, 3.18128e-05, 0.000171981]
+  # extrinsicRot: [-1, 0, 0,
   #                 0, 1, 0,
-  #                 0, 0, 1]
-  # extrinsicRPY: [1, 0, 0,
-  #                 0, 1, 0,
-  #                 0, 0, 1]
+  #                 0, 0, -1]
+  # extrinsicRPY: [0, -1, 0,
+  #                1, 0, 0,
+  #                0, 0, 1]
+  extrinsicRot: [0.0707618,   -0.985406,   -0.154813,
+                  -0.0712324,   -0.159797,    0.984576,
+                  -0.994946,  -0.0586427,  -0.0815003]
+  extrinsicRPY: [0.0707618,   -0.985406,   -0.154813,
+                  -0.0712324,   -0.159797,    0.984576,
+                  -0.994946,  -0.0586427,  -0.0815003]
 
   # LOAM feature threshold
   edgeThreshold: 1.0

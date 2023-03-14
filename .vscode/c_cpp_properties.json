@@ -1,0 +1,44 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/jeff/codes/softwares/ros_hector_plugins/devel/include/**",
+        "/home/jeff/codes/LIO-SAM/devel/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/ego_planner_swarm/bspline_opt/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/ego_planner_swarm/drone_detect/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/ego_planner_swarm/plan_manage/include/**",
+        "/home/jeff/codes/softwares/ros_hector_plugins/src/hector_gazebo_plugins/include/**",
+        "/home/jeff/codes/LIO-SAM/src/LIO-SAM/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/motion_planning/min_snap_trajectory/min_snap/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/motion_planning/min_snap_trajectory/traj_utils/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/motion_planning/min_snap_trajectory/uav_simulator/Utils/multi_map_server/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/motion_planning/min_snap_trajectory/uav_simulator/my_visualization/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/ego_planner_swarm/path_searching/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/ego_planner_swarm/plan_env/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/motion_planning/min_snap_trajectory/uav_simulator/Utils/pose_utils/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Simulator/gazebo_simulator/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/motion_planning/global_planner/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/motion_planning/local_planner/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/simulator_utils/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/uav_control/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/motion_planning/min_snap_trajectory/uav_simulator/so3_control/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/motion_planning/min_snap_trajectory/uav_simulator/so3_quadrotor_simulator/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/ego_planner_swarm/traj_utils/include/**",
+        "/home/jeff/codes/prometheus/Prometheus/Modules/motion_planning/min_snap_trajectory/uav_simulator/Utils/uav_utils/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
